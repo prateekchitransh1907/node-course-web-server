@@ -1,8 +1,9 @@
 const express = require('express'); //first step importing the express module
-const hbs = require('hbs');
-const fs = require('fs');
+
 var app = express();// second step is to make an express app
 
+const hbs = require('hbs');
+const fs = require('fs');
 hbs.registerPartials(__dirname+'/views/partials'); // this for adding partials -- which is same piece of template that is
 //going to reappear in all your views for e.g. the footer and the header.
 //the partials view is created in the views folder.
@@ -98,6 +99,15 @@ app.get('/bad',(req,res)=>{
     errorMessage : 'Error Handling request'
   });
 });
+
+//new challenge for git update and deploying to heroku 
+app.get('/projects',(req, res)=>{
+  res.render('projects.hbs',{
+    pageTitle : 'Projects',
+    someText : 'List of projects will be shown here.'
+  }
+);
+})
 // this binds a port on our machine to our app to listen to the requests
 //app.listen does take a second argument and is a function so we can do something while the server is running
 // and the output is not served
